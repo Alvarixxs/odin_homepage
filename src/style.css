@@ -1,0 +1,271 @@
+@font-face {
+    font-family: "Roboto Black";
+    src: url('./resources/Roboto-Black.ttf');
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    src: url('./resources/Roboto-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Roboto Medium";
+    src: url('./resources/Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: "Roboto Regular";
+    src: url('./resources/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Roboto Thin";
+    src: url('./resources/Roboto-Thin.ttf');
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes appearFromBelow {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes appearFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes appearFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.appear-bottom {
+    animation: appearFromBelow 1s ease;
+}
+
+.appear-left {
+    animation: appearFromLeft 1s ease;
+}
+
+.appear-right {
+    animation: appearFromRight 1s ease;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--default-color); }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+    background-size: 180% 180%;
+    animation: gradient-animation 6s ease infinite;
+    display: flex;
+    flex-direction: column;
+    --side-padding: 20vw;
+    --default-color: black;
+    --contrast-color: white;
+}
+
+nav {
+    padding: 3vh var(--side-padding);
+    display: flex;
+    gap: 5vw;
+}
+
+nav > * {
+    flex: 1 1 auto;
+    background: none;
+    color: var(--default-color);
+    border: none;
+}
+
+.button-link {
+    font-family: "Roboto Bold";
+    font-size: 1.2em;
+    border-bottom: 3px solid var(--default-color);
+    transition: border-bottom-color 0.5s ease, color 0.3s ease;
+}
+
+#contact-link {
+    border: none;
+    flex: 1 1 auto;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+    background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+    background-size: 180% 180%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 6s ease infinite;
+}
+
+#contact-link-div {
+    background-color: var(--default-color); display: flex; justify-content: center; border-radius: 25px;
+    border: none;
+    transition: background-color 0.5s ease;
+}
+
+.button-link:hover {
+    color: var(--contrast-color);
+    border-bottom: 3px solid var(--contrast-color);
+}
+
+#contact-link-div:hover {
+    background-color: var(--contrast-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.intro {
+    position: relative;
+    padding: 10vh var(--side-padding);
+    display: flex;
+    flex-direction: row;
+    height: min(100vh);
+    animation: appearFromBelow 1s ease forwards;
+
+}
+
+.salute-text {
+    font-family: 'Roboto Black'; font-size: 7em;
+    transition: background-color 0.3s, color 0.3s;
+    background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+    background-size: 180% 180%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 6s ease infinite;
+}
+
+.status-text {
+    overflow: hidden;
+    border-right: 2px solid var(--default-color);
+    display: inline-block;
+    animation: blink-caret 0.5s step-end infinite alternate;
+    padding-right: 5px;
+}
+
+.image-holder {
+    background-image: url("resources/developer.png");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 100%;
+    overflow: visible;
+    width: 700px;
+    padding: 2vw; border-radius: 30px 30px 0 0;
+    border: 2px solid var(--default-color);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 100vw solid transparent;
+    border-bottom: 20vh solid var(--default-color); /* You can change the color */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: border-bottom-color 1s ease;
+}
+
+.quote {
+    background-color: var(--default-color);
+    padding: 10vh 10vw;
+    text-align: center;
+    transition: background-color 1s ease, color 1s ease;
+    color: var(--contrast-color);
+    position: relative;
+}
+
+.about {
+    background-color: var(--default-color);
+    padding: 10vh var(--side-padding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+    color: gray;
+    transition: background-color 1s ease, color 1s ease;
+    position: relative;
+}
+
+.profile-image {
+    background-image: url("resources/myself.png");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 700px;
+    width: 50%;
+    border-radius: 10px;
+    visibility: hidden;
+    z-index: 1;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    width: 50%;
+    visibility: hidden;
+}
+
+.description-text {
+    font-family: 'Roboto Thin'; font-size: 2em;
+}
+
+.projects {
+    height: 100vh;
+    position: relative;
+}
+
+.triangle-2 {
+    width: 0;
+    height: 0;
+    border-right: 100vw solid transparent;
+    border-top: 20vh solid var(--default-color); /* You can change the color */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: border-top-color 1s ease;
+}
