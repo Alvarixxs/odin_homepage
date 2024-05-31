@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body class="body">
 <nav>
@@ -19,15 +20,15 @@
 </nav>
 <main>
     <section class="intro box">
-        <div style="color: var(--default-color); display: flex; flex-direction: column; gap:2vh; ">
+        <div style="color: var(--default-color); display: flex; flex-direction: column; gap:2vh; transition: color 1s ease; ">
             <p style="font-family: 'Roboto thin'; font-size: 7em">Nice to meet you!</p>
-            <div style="display: flex">
-                <div style="background-color: var(--default-color); padding: 0 2vw;">
+            <div style="display: flex;">
+                <div style="background-color: var(--default-color); transition: background-color 1s ease; padding: 0 2vw;">
                     <p class="salute-text">I'M ADS.</p>
                 </div>
             </div>
-            <div style="display: flex;font-family: 'Roboto Bold'; font-size: 2em; margin-top: 2vh; padding: 1vh;">
-                <div style="display: flex; align-items:center; border-bottom: 2px solid var(--default-color)">
+            <div style="display: flex; font-family: 'Roboto Bold'; font-size: 2em; margin-top: 2vh; padding: 1vh;">
+                <div style="display: flex; align-items:center; border-bottom: 2px solid var(--default-color); transition: border-bottom-color 1s ease;">
                     <span class="status-text"></span>
                 </div>
             </div>
@@ -38,16 +39,16 @@
         <div class="triangle"></div>
     </section>
     <section class="quote">
-        <p class="quote-text" style="font-family: 'Roboto Bold'; font-size: 6em; visibility: hidden;">
+        <p class="quote-text" style="font-family: 'Josefin Sans'; font-size: 6em; visibility: hidden; z-index: 1000;">
             I create elevating experiences for people and firms using technology to empower my creative potential
             and develop my personality as much as possible.
         </p>
     </section>
-    <section class="about">
-        <p style="font-family: 'Roboto Black'; font-size: 10em;">About me.</p>
+    <section class="about section">
+        <p class="section-title">About me.</p>
         <div style="display: flex; gap: 2vw; height: 100%; width: 100%;">
             <div class="description box">
-                <p style="font-family: 'Roboto Bold'; font-size: 4em; border-bottom: 2px solid white; margin-bottom: 2vh;">Who am I?</p>
+                <p style="font-family: 'Roboto Bold'; font-size: 3em; border-bottom: 2px solid var(--contrast-color); margin-bottom: 2vh;">Who am I?</p>
                 <p class="description-text">My name is Alvaro de Santos.</p>
                 <p class="description-text">Student in double major (mathematics and computer science) and independent learner.</p>
                 <p class="description-text">Completed The Odin Project and currently working on my Typescript and React.</p>
@@ -57,7 +58,23 @@
             <div class="profile-image box"></div>
         </div>
     </section>
-    <section class="projects">
+    <section class="projects section">
+        <div style="width: 100%; display: flex; justify-content: right">
+            <div style="background-color: var(--default-color); padding: 0 2vw; transition: background-color 0.5s ease;">
+                <p class="section-title projects-title">Projects.</p>
+            </div>
+        </div>
+        <div class="project-holder">
+            <div class="project" style="margin-bottom:5vh;" onclick="openInNewTab()">
+                <div style="width: 400px; height: 400px; background-image: url('resources/project_weather.png');background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+                <script>
+                    function openInNewTab() {
+                        window.open("https://alvarixxs.github.io/odin_weather_app/", "_blank");
+                    }
+                </script>
+            </div>
+            <div class="project" style="margin-top: 5vh;"></div>
+        </div>
         <div class="triangle-2"></div>
     </section>
 </main>

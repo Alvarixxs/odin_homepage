@@ -25,38 +25,48 @@ const profile = document.querySelector('.profile-image')
 const rect = about.getBoundingClientRect();
 
 
+const projects = document.querySelector('.projects');
+const projectList = document.querySelectorAll('.project');
+const rectProjects = projects.getBoundingClientRect()
+
 window.addEventListener('scroll', e => {
     let scrollPosition = window.scrollY
 
     if (scrollPosition < 0.25*rect.top) {
-        triangle.style.borderBottom = '20vh solid black'
-        triangle2.style.borderTop = '20vh solid black'
-        about.style.backgroundColor = 'black'
-        about.style.color = 'white'
-        quote.style.color = 'white'
-        quote.style.backgroundColor = 'black'
+        document.documentElement.style.setProperty('--default-color','black')
+        document.documentElement.style.setProperty('--contrast-color','white')
     }
-    if (scrollPosition > rect.top*0.25 && scrollPosition < rect.top*0.85) {
-        triangle.style.borderBottom = '20vh solid white'
-        triangle2.style.borderTop = '20vh solid white'
-        about.style.backgroundColor = 'white'
-        quote.style.backgroundColor = 'white'
-        about.style.color = 'gray'
-        quote.style.color = 'gray'
+    else if (scrollPosition > rect.top*0.25 && scrollPosition < rect.top*0.8) {
+        document.documentElement.style.setProperty('--default-color','white')
+        document.documentElement.style.setProperty('--contrast-color','gray')
         quoteText.classList.add('appear-bottom')
         quoteText.style.visibility = 'visible'
     }
-
-    if (scrollPosition > rect.top*0.85) {
-        triangle.style.borderBottom = '20vh solid black'
-        triangle2.style.borderTop = '20vh solid black'
-        about.style.backgroundColor = 'black'
-        about.style.color = 'white'
-        quote.style.color = 'white'
-        quote.style.backgroundColor = 'black'
+    else if (scrollPosition > rect.top*0.8 && scrollPosition < 1.25*rect.top) {
+        document.documentElement.style.setProperty('--default-color','black')
+        document.documentElement.style.setProperty('--contrast-color','white')
         description.classList.add('appear-left')
         profile.classList.add('appear-right')
         description.style.visibility='visible'
         profile.style.visibility='visible'
     }
+    else if (scrollPosition > rect.top*1.25) {
+        document.documentElement.style.setProperty('--default-color','white')
+        document.documentElement.style.setProperty('--contrast-color','gray')
+    }
+
+    if (scrollPosition > rectProjects.top) {
+        projectList.forEach((project)=>project.classList.add('come-closer'))
+    }
+})
+
+projectList.forEach((project)=> {
+    project.addEventListener('mouseover', e => {
+        document.documentElement.style.setProperty('--default-color','black')
+        document.documentElement.style.setProperty('--contrast-color','white')
+    })
+    project.addEventListener('mouseout', e => {
+        document.documentElement.style.setProperty('--default-color','white')
+        document.documentElement.style.setProperty('--contrast-color','gray')
+    })
 })

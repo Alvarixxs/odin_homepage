@@ -23,6 +23,11 @@
     src: url('./resources/Roboto-Thin.ttf');
 }
 
+@font-face {
+    font-family: "Josefin Sans";
+    src: url('./resources/JosefinSans-VariableFont_wght.ttf');
+}
+
 @keyframes gradient-animation {
     0% {
         background-position: 0% 50%;
@@ -68,6 +73,15 @@
     }
 }
 
+@keyframes comeCloser {
+    0% {
+        transform: scale(0.1) translateZ(-500px); /* Start state: small and far */
+    }
+    100% {
+        transform: scale(1) translateZ(0); /* End state: normal size and position */
+    }
+}
+
 .appear-bottom {
     animation: appearFromBelow 1s ease;
 }
@@ -78,6 +92,10 @@
 
 .appear-right {
     animation: appearFromRight 1s ease;
+}
+
+.come-closer {
+    animation: comeCloser 3s forwards;
 }
 
 @keyframes blink-caret {
@@ -95,15 +113,20 @@ button {
     cursor: pointer;
 }
 
+:root {
+    --side-padding: 20vw;
+    --default-color: black;
+    --contrast-color: white;
+    --contrast-color-2: gray;
+}
+
 body {
     background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
     background-size: 180% 180%;
     animation: gradient-animation 6s ease infinite;
     display: flex;
     flex-direction: column;
-    --side-padding: 20vw;
-    --default-color: black;
-    --contrast-color: white;
+
 }
 
 nav {
@@ -170,7 +193,6 @@ main {
 
 .salute-text {
     font-family: 'Roboto Black'; font-size: 7em;
-    transition: background-color 0.3s, color 0.3s;
     background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
     background-size: 180% 180%;
     -webkit-background-clip: text;
@@ -184,6 +206,7 @@ main {
     display: inline-block;
     animation: blink-caret 0.5s step-end infinite alternate;
     padding-right: 5px;
+    transition: border-right-color 1s ease;
 }
 
 .image-holder {
@@ -196,6 +219,7 @@ main {
     width: 700px;
     padding: 2vw; border-radius: 30px 30px 0 0;
     border: 2px solid var(--default-color);
+    transition: border 1s ease;
 }
 
 .triangle {
@@ -221,12 +245,16 @@ main {
 .about {
     background-color: var(--default-color);
     padding: 10vh var(--side-padding);
+    color: gray;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+.section {
+    padding: 10vh var(--side-padding);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3vw;
-    color: gray;
-    transition: background-color 1s ease, color 1s ease;
     position: relative;
 }
 
@@ -255,17 +283,49 @@ main {
 }
 
 .projects {
-    height: 100vh;
     position: relative;
+    height: 100vh;
 }
 
 .triangle-2 {
     width: 0;
     height: 0;
-    border-right: 100vw solid transparent;
+    border-right: 99vw solid transparent;
     border-top: 20vh solid var(--default-color); /* You can change the color */
     position: absolute;
     top: 0;
     left: 0;
     transition: border-top-color 1s ease;
+}
+
+.section-title {
+    font-family: 'Roboto Thin';
+    font-size: 10em;
+}
+
+.projects-title {
+    background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+    background-size: 180% 180%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 6s ease infinite;
+}
+
+.project-holder {
+    height: 100%;
+    width: 100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+}
+.project {
+    background-color: white;
+    border-radius: 20px;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.project:hover {
+    transform: scale(1.05);
+    background-color: black;
+    cursor: pointer;
 }
